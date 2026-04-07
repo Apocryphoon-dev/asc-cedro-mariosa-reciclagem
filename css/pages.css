@@ -851,6 +851,91 @@ body.contato-page .page-header {
 }
 
 /* ==========================================
+   PÁGINA PRODUTOS
+   ========================================== */
+.products-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.products-intro {
+    text-align: center;
+    color: var(--gray-light);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.product-card {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--accent-green);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(45, 80, 22, 0.15);
+    border-top-width: 6px;
+}
+
+.product-image-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+    border: 4px solid var(--accent-green);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-image-circle {
+    transform: scale(1.08);
+    border-color: var(--primary-green);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+.product-image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-sm);
+    transition: color 0.3s ease;
+}
+
+.product-card:hover h3 {
+    color: var(--accent-green);
+}
+
+.product-card p {
+    color: var(--gray-light);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+}
+
+.product-card .btn {
+    margin-top: auto;
+}
+
+/* ==========================================
    RESPONSIVIDADE PÁGINAS INTERNAS
    ========================================== */
 @media (max-width: 768px) {
