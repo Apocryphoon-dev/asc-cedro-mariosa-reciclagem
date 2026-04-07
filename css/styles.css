@@ -25,6 +25,7 @@
     
     /* Transições */
     --transition: all 0.3s ease;
+    --page-bg: #f4fbf4;
 }
 
 /* ==========================================
@@ -34,6 +35,25 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+}
+
+/* Fundo da página */
+body {
+    background-color: var(--page-bg);
+}
+
+/* Estilo dos selects (seletor) */
+select {
+    background: var(--accent-green-light);
+    color: var(--white);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    appearance: none;
+}
+
+select:focus {
+    outline: 2px solid rgba(45,80,22,0.12);
 }
 
 .section-title {

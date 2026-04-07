@@ -302,3 +302,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// ==========================================
+// CARROSSEL SIMPLES (Quem Somos)
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('aboutCarousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    const btnNext = carousel.querySelector('.carousel-button--next');
+    const btnPrev = carousel.querySelector('.carousel-button--prev');
+    let index = 0;
+    const total = slides.length;
+    let intervalId = null;
+
+    // criar indicadores dinamicamente
+    const indicators = document.createElement('div');
+    indicators.className = 'carousel-indicators';
+    slides.forEach((s, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'indicator';
+        btn.setAttribute('aria-label', `Ir para imagem ${i + 1}`);
+        btn.addEventListener('click', () => { goTo(i); start(); });
+        indicators.appendChild(btn);
+    });
+    carousel.appendChild(indicators);
+
+    const updateIndicators = () => {
+        const nodes = indicators.querySelectorAll('.indicator');
+        nodes.forEach((n, idx) => n.classList.toggle('active', idx === index));
+    };
+
+    const goTo = (i) => {
+        index = ((i % total) + total) % total;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        updateIndicators();
+    };
+
+    const next = () => goTo(index + 1);
+    const prev = () => goTo(index - 1);
+
+    const start = () => {
+        stop();
+        intervalId = setInterval(next, 3000);
+    };
+
+    const stop = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    };
+
+    btnNext?.addEventListener('click', () => { next(); start(); });
+    btnPrev?.addEventListener('click', () => { prev(); start(); });
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    // iniciar
+    goTo(0);
+    start();
+});
